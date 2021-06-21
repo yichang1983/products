@@ -10,3 +10,6 @@ while True:
 	# p = [name, price]					#以上的7-9 行程式碼，相當於第十行的程式碼。
 	products.append([name, price])		#把小清單裡的內容（商品名稱和商品價格）加上去大清單（product）裡.,  除了第十行的寫法外，更簡單的寫法，直接把小清單寫進大清單中。
 print(products)
+
+for product in products:
+	print(product[0], '的價格是', product[1])
