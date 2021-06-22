@@ -1,13 +1,18 @@
+import os		#operating system
+
 #讀取檔案
 products = []
-
-with open('products.csv', 'r', encoding = 'utf-8') as f:			#encoding = 'utf-8' 就是讓它讀取時不出現亂碼。
-	for line in f:													#建立一個for loop 迴圈。
-		if '商品,價格' in line:										#如果'商品,價格'這個字串有在 line 裡面的話。
-			continue												#continue 的意思是指跳到下一迴的意思。
-		name, price = line.strip().split(',')						#用.strip() 來除掉換行符號(\n), 用split(',')來用逗點做分割。當split 完成後，它就會變成清單，然而存進name, price 裡。
-		products.append([name,price])								#將讀取出來的name, price 存入products的清單中。
-print(products)
+if os.path.isfile('products.csv'):
+	print('找到檔案了！')													#檢查檔案在不在
+	with open('products.csv', 'r', encoding = 'utf-8') as f:			#encoding = 'utf-8' 就是讓它讀取時不出現亂碼。
+		for line in f:													#建立一個for loop 迴圈。
+			if '商品,價格' in line:										#如果'商品,價格'這個字串有在 line 裡面的話。
+				continue												#continue 的意思是指跳到下一迴的意思。
+			name, price = line.strip().split(',')						#用.strip() 來除掉換行符號(\n), 用split(',')來用逗點做分割。當split 完成後，它就會變成清單，然而存進name, price 裡。
+			products.append([name,price])								#將讀取出來的name, price 存入products的清單中。
+	print(products)
+else:
+	print('沒找到檔案...')
 
 #讓使用者輸入
 while True:
